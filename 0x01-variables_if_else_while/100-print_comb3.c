@@ -10,19 +10,21 @@ int main(void)
 {
 	int digit1, digit2;
 
-	for (digit1 = 0; digit1 <= 9; digit1++)
+	for (digit2 = 0; digit2 <= 9; digit2++)
 	{
-		for (digit2 = 0; digit2 <= 9; digit2++)
+		for (digit1 = 0; digit1 <= 9; digit1++)
 		{
-			if (!((digit2 == digit1) || (digit1 > digit2)))
+			if (!((digit1 == digit2) || (digit2 > digit1)))
 			{
-				putchar((digit1 % 10) + '0');
 				putchar((digit2 % 10) + '0');
-				if (!(digit1 == 9 && digit2 == 9))
-				{
-					putchar(',');
-					putchar(' ');
-				}
+				putchar((digit1 % 10) + '0');
+
+				if (digit2 == 8 && digit1 == 9)
+					continue;
+
+				putchar(',');
+				putchar(' ');
+
 			}
 		}
 	}
