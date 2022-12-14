@@ -6,35 +6,43 @@
  *@n: character to start print
  *Return: return void
  */
+
 void print_times_table(int n)
 {
-int i, j;
-
-if (n < 0 || n > 15)
-return;
-
-for (i = 0; i <= n; i++)
+int cunter1, cunter2, product;
+if (n >= 0 && n <= 15)
 {
-for (j = 0; j <= n; j++)
+for (cunter1 = 0; cunter1 <= n; cunter1++)
 {
-int p = (i * j);
-
-if (j == n)
+for (cunter2 = 0; cunter2 <= n; cunter2++)
 {
-printf("%d\n", p);
+product = cunter1 * cunter2;
+if (cunter2 != 0)
+{
+_putchar(',');
+_putchar(' ');
+if (product < 100)
+_putchar(' ');
+if (product < 10)
+_putchar(' ');
 }
-else if (p >= 100)
+if (product >= 100)
 {
-printf("%d, ", p);
+_putchar('0' + product / 100);
+_putchar('0' + (product % 100) / 10);
+_putchar('0' + (product % 10));
 }
-else if (p >= 10)
+else if (product <= 9)
 {
-printf("%d,  ", p);
+_putchar('0' + product);
 }
 else
 {
-printf("%d,   ", p);
+_putchar('0' + product / 10);
+_putchar('0' + product % 10);
 }
+}
+_putchar('\n');
 }
 }
 }
