@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include "main.h"
 
@@ -21,6 +20,14 @@ for (j = 0; j <= n; j++)
 if (j == n)
 {
 printf("%d\n", i * j);
+}
+else if (j >= 100)
+{
+printf("%d, ", i * j);
+}
+else if (j >= 10)
+{
+printf("%d,  ", i * j);
 }
 else
 {
