@@ -17,21 +17,23 @@ for (i = 0; i <= n; i++)
 {
 for (j = 0; j <= n; j++)
 {
+int p = (i * j);
+
 if (j == n)
 {
-printf("%d\n", i * j);
+printf("%d\n", p);
 }
-else if (j >= 100)
+else if (p >= 100)
 {
-printf("%d, ", i * j);
+printf("%d, ", p);
 }
-else if (j >= 10)
+else if (p >= 10)
 {
-printf("%d,  ", i * j);
+printf("%d,  ", p);
 }
 else
 {
-printf("%d,   ", i * j);
+printf("%d,   ", p);
 }
 }
 }
