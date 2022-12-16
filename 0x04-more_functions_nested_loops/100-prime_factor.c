@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <math.h>
 /**
- *main: prints the largest prime factor of 612352475143
+ *main - prints the largest prime factor of 612352475143
  *Return: Returns void
  */
 
 int main(void)
 {
-long long num = 612852475143;
-long long largest_prime_factor = 1;
-long long i;
+long num = 612852475143;
+long largest_prime_factor = 1;
+long i;
 
 while (num % 2 == 0)
 {
@@ -31,6 +31,6 @@ if (num > 2)
 largest_prime_factor = num;
 }
 
-printf("%lld\n", largest_prime_factor);
+printf("%ld\n", largest_prime_factor);
 return (0);
 }
