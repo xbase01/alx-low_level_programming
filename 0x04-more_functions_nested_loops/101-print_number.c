@@ -1,35 +1,66 @@
+#include <stdio.h>
+#include <limits.h>
 #include "main.h"
 
+int _pow(int x, int y);
+
 /**
- *print_number - prints an integer
- *@n: value to check
- *Returns: returns n
+ * print_number - prints an integer
+ *
+ * @num: number to print
+ *
  */
-
-void print_number(int n)
+void print_number(int num)
 {
-int divisor = 1;
+int quot, degree, i, is_int_min, temp;
 
-if (n == 0)
+is_int_min = 0;
+if (num == INT_MIN)
 {
-_putchar('0');
-return;
+num++;
+is_int_min = 1;
 }
-if (n < 0)
+if (num < 0)
 {
+num = -num;
 _putchar('-');
-n = -n;
+}
+quot = num;
+degree = 0;
+while (quot / 10 > 0)
+{
+++degree;
+quot /= 10;
+}
+quot = num;
+for (i = degree; i >= 0; --i)
+{
+temp = quot / _pow(10, i);
+if (i == 0 && is_int_min)
+temp += 1;
+_putchar('0' + temp);
+quot %= _pow(10, i);
+}
 }
 
-while (n / divisor >= 10)
+/**
+ * _pow - compute power
+ *
+ * @x: the base
+ * @y: the exponent
+ *
+ * Return: power of the base to the exponent
+ *
+ */
+int _pow(int x, int y)
 {
-divisor *= 10;
+int result = 1;
+
+while (y >= 1)
+{
+result *= x;
+--y;
 }
 
-while (divisor > 0)
-{
-_putchar((n / divisor) +'0');
-n %= divisor;
-divisor /= 10;
-}
+return (result);
 }
