@@ -1,24 +1,31 @@
 #include <stdio.h>
-/**
- *main - prints first 50 Fibonacci numbers
- *
- *Return: Returns 0
- */
 
+/**
+ * main - prints first 50 numbers of the fibonacci sequence
+ *
+ * Description: This function prints from 1 to 50
+ *
+ * Return: 0 (success)
+ */
 int main(void)
 {
-int first = 1, second = 2, next, c;
+long prev, curr, temp;
+int cunt;
 
-printf("%d, %d", first, second);
-
-for (c = 0; c < 48; c++)
+cunt = 1;
+prev = 1;
+curr = 2;
+printf("%ld, %ld, ", prev, curr);
+while (cunt <= 48)
 {
-next = first + second;
-printf(", %d", next);
-first = second;
-second = next;
+temp = curr;
+curr += prev;
+prev = temp;
+printf("%ld", curr);
+if (cunt != 48)
+printf(", ");
+++cunt;
 }
 printf("\n");
-
 return (0);
 }
