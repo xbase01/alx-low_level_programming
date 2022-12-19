@@ -2,30 +2,31 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define PASSWORD_LENGTH 8
+/**
+ * main - entry point
+ *
+ * Description: This function generates a random keygen.
+ *
+ * Return: 0 (success)
+ */
 
 int main(void)
 {
-  char password[PASSWORD_LENGTH + 1];
+  int i = 0;
+  int j = 0;
+  int k = 0;
+  time_t t;
 
-  // Seed the random number generator with the current time
-  srand(time(NULL));
-
-  for (int i = 0; i < PASSWORD_LENGTH; i++) {
-    // Generate a random number between 0 and 9
-    int random_number = rand() % 10;
-
-    // Convert the random number to a character
-    char c = '0' + random_number;
-
-    // Add the character to the password
-    password[i] = c;
-  }
-
-  // Null-terminate the password string
-  password[PASSWORD_LENGTH] = '\0';
-
-  printf("Generated password: %s\n", password);
-
-  return 0;
+  srand((unsigned int) time(&t));
+  while (j < 2772)
+    {
+      i = rand() % 128;
+      if ((j + i) > 2772)
+	break;
+      j += i;
+      k++;
+      printf("%c", i);
+    }
+  printf("%c\n", (2772 - j));
+  return (0);
 }
