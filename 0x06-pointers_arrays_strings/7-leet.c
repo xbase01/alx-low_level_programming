@@ -1,61 +1,24 @@
 #include "main.h"
 /**
- *leet - encodes a string into 1337
- *@s: character to check
- *Return: returns 0
+ * leet - encodes a string into 1337
+ * @c: char to encode
+ * Return: @c char
  */
-char *leet(char *s)
+char *leet(char *c)
 {
 int i;
+int j;
+char letters[] = "aeotl";
+char up_letters[] = "AEOTL";
+char numbers[] = "43071";
 
-for (i = 0; s[i] != '\0'; i++)
+for (i = 0; c[i] != '\0'; i++)
 {
-
-if (s[i] == 'a')
+for (j = 0; letters[j] != '\0'; j++)
 {
-s[i] = '4';
-}
-else if (s[i] == 'e')
-{
-s[i] = '3';
-}
-else if (s[i] == 'o')
-{
-s[i] = '0';
-}
-else if (s[i] == 't')
-{
-s[i] = '7';
-}
-else if (s[i] == 'l')
-{
-s[i] = '1';
+if (c[i] == letters[j] || c[i] == up_letters[j])
+c[i] = numbers[j];
 }
 }
-
-for (i = 0; s[i] != '\0'; i++)
-{
-if (s[i] == 'A')
-{
-s[i] = '4';
-}
-else if (s[i] == 'E')
-{
-s[i] = '3';
-}
-else if (s[i] == 'O')
-{
-s[i] = '0';
-}
-else if (s[i] == 'T')
-{
-s[i] = '7';
-}
-else if (s[i] == 'L')
-{
-s[i] = '1';
-}
-}
-
-return s;
+return (c);
 }
