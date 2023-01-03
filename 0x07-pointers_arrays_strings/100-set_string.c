@@ -2,6 +2,7 @@
 #include <stdio.h>
 /**
  * set_string - sets the value of a pointer to char
+ * @s: double pointer
  * @to: value to set
  * Return: void
  */
