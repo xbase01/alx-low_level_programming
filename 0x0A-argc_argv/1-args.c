@@ -1,0 +1,21 @@
+#include <stdio.h>
+/**
+ * main - prints number of arguments passed into it
+ * @argc: argument counter
+ * @argv: argument vector
+ * Return: return 0 if successful
+ */
+int main(int argc, char *argv[])
+{
+
+if (argc >= 0)
+{
+printf("%d\n", (argc - 1));
+}
+else
+printf("%s\n", argv[0]);
+
+
+
+return (0);
+}
