@@ -1,28 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include <ctype.h>
 
 /**
- * main - Entry point
- *
- * @argc: the argument count
- * @argv: the arguments as string array
- *
- * Description: print positive integers
- *
- * Return: 0 (success), 1 (if no argument provided
- * or if a symbol which is not a digit found)
+ * is_digit - checks if a string contains only digits
+ * @str: string to check
+ * Return: 1 if str contains only digits, return 0 if successful
  */
+
+int is_digit(char *str)
+{
+int i;
+
+for (i = 0; str[i] != '\0'; i++)
+{
+if (!isdigit(str[i]))
+{
+return (0);
+}
+}
+
+return (1);
+}
+
+/**
+ * main - entry point
+ * @argc: argument counter
+ * @argv: argument vector
+ * Return: return 0 if successful
+ */
+
 int main(int argc, char *argv[])
 {
-int i, sum;
-char *ptr;
+int i;
+int sum = 0;
 
-sum = 0;
-for (i = 1; i < argc; ++i)
+if (argc == 1)
 {
-strtol(argv[i], &ptr, 10);
-if (*ptr == '\0')
+printf("0\n");
+return (0);
+}
+
+for (i = 1; i < argc; i++)
+{
+if (is_digit(argv[i]))
 {
 sum += atoi(argv[i]);
 }
@@ -32,6 +53,8 @@ printf("Error\n");
 return (1);
 }
 }
+
 printf("%d\n", sum);
+
 return (0);
 }
