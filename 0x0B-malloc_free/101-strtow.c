@@ -1,78 +1,76 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
+/**
+ * wrdcnt - counts the number of words in a string
+ * @s: string to count
+ *
+ * Return: int of number of words
+ */
+int wrdcnt(char *s)
+{
+int i, n = 0;
+
+for (i = 0; s[i]; i++)
+{
+if (s[i] == ' ')
+{
+if (s[i + 1] != ' ' && s[i + 1] != '\0')
+n++;
+}
+else if (i == 0)
+n++;
+}
+n++;
+return (n);
+}
+
 /**
  * strtow - splits a string into words
- * @str: input string
- * Return: returns a pointer of array of string if successful otherwise NULL
+ * @str: string to split
+ *
+ * Return: pointer to an array of strings
  */
 char **strtow(char *str)
 {
-int i, j, k, len = strlen(str), count, start = 0;
-char **ptr;
+int i, j, k, l, n = 0, wc = 0;
+char **w;
 
-if (str == NULL || str[0] == '\0')
+if (str == NULL || *str == '\0')
 return (NULL);
-count = count_words(str);
-ptr = malloc((count + 1) * sizeof(char *));
-if (ptr == NULL)
+n = wrdcnt(str);
+if (n == 1)
 return (NULL);
-for (i = 0, j = 0; i < len; i++)
+w = (char **)malloc(n *sizeof(char *));
+if (w == NULL)
+return (NULL);
+w[n - 1] = NULL;
+i = 0;
+while (str[i])
 {
-if (str[i] != ' ')
+if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 {
-if (start == 0)
+for (j = 1; str[i + j] != ' ' && str[i + j]; j++)
+;
+j++;
+w[wc] = (char *)malloc(j *sizeof(char));
+j--;
+if (w[wc] == NULL)
 {
-start = 1;
-ptr[j] = malloc((len - i) * sizeof(char));
-if (ptr[j] == NULL)
-{
-while (j >= 0)
-free(ptr[j--]);
-free(ptr);
+for (k = 0; k < wc; k++)
+free(w[k]);
+free(w[n - 1]);
+free(w);
 return (NULL);
 }
-k = 0;
-}
-ptr[j][k++] = str[i];
+for (l = 0; l < j; l++)
+w[wc][l] = str[i + l];
+w[wc][l] = '\0';
+wc++;
+i += j;
 }
 else
-{
-if (start == 1)
-{
-start = 0;
-ptr[j++][k] = '\0';
+i++;
 }
-}
-}
-ptr[j] = NULL;
-return (ptr);
-}
-
-/**
- * count_words - counts word in string
- * @str: input string
- * Return: returns count
- */
-
-int count_words(char *str)
-{
-int i, count = 0, start = 0;
-for (i = 0; str[i]; i++)
-{
-if (str[i] != ' ')
-{
-if (start == 0)
-{
-start = 1;
-count++;
-}
-}
-else
-{
-start = 0;
-}
-}
-return (count);
+return (w);
 }
