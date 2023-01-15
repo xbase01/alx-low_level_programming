@@ -9,16 +9,22 @@
 char *_strdup(char *str)
 {
 char *ptr;
-
+int length = 0;
+ char *temp = str;
 
 if (str == NULL)
 return (NULL);
 
-int length = strlen(str) + 1;
+ while (*temp++)
+   length++;
+ length++;
+ 
+
 ptr = malloc(length * sizeof(char));
 if (ptr == NULL)
 return (NULL);
 
-strncpy(ptr, str, length);
-return (ptr);
+ temp = ptr;
+ while ((*temp++ = *str++));
+ return (ptr);
 }
