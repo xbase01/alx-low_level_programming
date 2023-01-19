@@ -6,25 +6,33 @@
  * @argv: array of arguments
  * Return: 0 if success, 1 or 2 if error
  */
+
 int main(int argc, char *argv[])
 {
-int num_bytes, i;
-unsigned char *main_ptr;
+char *opc = (char *) main;
+int i, nbytes;
 
 if (argc != 2)
 {
 printf("Error\n");
-return (1);
+exit(1);
 }
-num_bytes = atoi(argv[1]);
-if (num_bytes < 0)
+
+nbytes = atoi(argv[1]);
+
+if (nbytes < 0)
 {
 printf("Error\n");
-return (2);
+exit(2);
 }
-main_ptr = (unsigned char *)main;
-for (i = 0; i < num_bytes; i++)
-printf("%02x", main_ptr[i]);
+
+for (i = 0; i < nbytes; i++)
+{
+printf("%02x", opc[i] & 0xFF);
+if (i != nbytes - 1)
+printf(" ");
+}
+
 printf("\n");
 return (0);
 }
