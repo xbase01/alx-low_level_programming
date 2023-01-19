@@ -20,7 +20,8 @@ int i;
 i = 0;
 while (i < 5)
 {
-if (*(ops[i]).op == *s)
+if (ops[i].op[0] == *s)
+
 {
 return (ops[i].f);
 }
