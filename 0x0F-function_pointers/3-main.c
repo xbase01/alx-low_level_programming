@@ -12,10 +12,6 @@
  * 99 for incorrect operator, 100 for division by zero
  */
 
-/* A function that is an array of pointers */
-int (*get_op_func(char *s))(int, int);
-
-
 int main(int argc, char *argv[])
 {
 int a, b;
