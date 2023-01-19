@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "3-calc.h"
+#include <stddef.h>
+#include <stdarg.h>
 
 /**
  * main - performs simple operations
@@ -10,29 +12,38 @@
  * 99 for incorrect operator, 100 for division by zero
  */
 
+/* A function that is an array of pointers */
+int (*get_op_func(char *s))(int, int);
+
+
 int main(int argc, char *argv[])
 {
-int num1, num2;
-int (*f)(int, int);
+int a, b;
+int (*operation)(int, int);
 
 if (argc != 4)
 {
 printf("Error\n");
 exit(98);
 }
-num1 = atoi(argv[1]);
-num2 = atoi(argv[3]);
-f = get_op_func(argv[2]);
-if (f == NULL)
+
+if (argv[2][1])
 {
 printf("Error\n");
 exit(99);
 }
-if ((*argv[2] == '/' || *argv[2] == '%') && num2 == 0)
+
+operation = (*get_op_func)(argv[2]);
+
+if (operation == NULL)
 {
 printf("Error\n");
-exit(100);
+exit(99);
 }
-printf("%d\n", f(num1, num2));
+
+a = atoi(argv[1]);
+b = atoi(argv[3]);
+
+printf("%d\n", operation(a, b));
 return (0);
 }
