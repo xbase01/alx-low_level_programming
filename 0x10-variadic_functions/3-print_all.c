@@ -13,7 +13,7 @@ char *s;
 int i = 0;
 
 va_start(valist, format);
-while (format && format[i])
+while (format && format[i] != '\0')
 {
 switch (format[i])
 {
@@ -28,19 +28,24 @@ printf("%f", va_arg(valist, double));
 break;
 case 's':
 s = va_arg(valist, char *);
-if (!s)
-s = "(nil)";
+if (s == NULL)
+{
+printf("(nil)");
+}
+else
+{
 printf("%s", s);
+}
 break;
 default:
 break;
 }
-if (format[i + 1])
+if (format[i + 1] != '\0')
+{
 printf(", ");
+}
 i++;
 }
 printf("\n");
 va_end(valist);
 }
-
-	  
