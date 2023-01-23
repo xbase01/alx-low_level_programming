@@ -1,8 +1,10 @@
 #include "variadic_functions.h"
 #include <stdio.h>
+
 /**
  * print_all - prints anything
  * @format: format of data type to be printed
+ * Return: void
  */
 void print_all(const char * const format, ...)
 {
