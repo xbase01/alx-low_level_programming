@@ -18,11 +18,11 @@ va_start(valist, n);
 for (i = 0; i < n; i++)
 {
 str = va_arg(valist, char *);
-if (str)
+if (str != NULL)
 printf("%s", str);
 else
-printf("nil");
-if (separator && i < n - 1)
+printf("(nil)");
+if (separator != NULL && i < n - 1)
 printf("%s", separator);
 }
 printf("\n");
