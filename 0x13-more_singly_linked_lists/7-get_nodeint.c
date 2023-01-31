@@ -18,5 +18,5 @@ unsigned int i;
 for (i = 0; node != NULL && i < index; i++)
 node = node->next;
 
-return (i == index) ? node : NULL;
+return ((i == index) ? node : NULL);
 }
