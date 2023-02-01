@@ -3,16 +3,22 @@
 /**
  * free_listint2 - frees a listint_t list and sets the head to NULL
  * @head: pointer to the address of the first node in the list
+ *
+ * Return: void
  */
-
 void free_listint2(listint_t **head)
 {
-listint_t *current;
+listint_t *tmp;
 
-while (*head != NULL)
+if (head == NULL)
+return;
+
+while (*head)
 {
-current = *head;
-*head = current->next;
-free(current);
+tmp = (*head)->next;
+free(*head);
+*head = tmp;
 }
+
+head = NULL;
 }
